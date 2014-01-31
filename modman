@@ -1,0 +1,3 @@
+app/etc/modules/Bubble_Search.xml   app/etc/modules/Bubble_Search.xml
+app/code/community/Bubble/Search    app/code/community/Bubble/Search
+lib/Elastica                        lib/Elastica

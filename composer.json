@@ -1,0 +1,9 @@
+{
+    "name": "mercator/magento-elasticsearch",
+    "type": "magento-module",
+    "description": "Mercator repository for Bubble_Search. Provides Elasticsearch integration.",
+    "homepage": "https://github.com/jreinke/magento-elasticsearch",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
