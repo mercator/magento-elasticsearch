@@ -23,7 +23,9 @@ class Bubble_Search_Block_Catalog_Layer_View extends Mage_Catalog_Block_Layer_Vi
     protected function _construct()
     {
         parent::_construct();
-        Mage::register('current_layer', $this->getLayer());
+        // MERCATOR - Use 'graceful' register() parameter so that this doesn't
+        // clash if something else has already registered 'current_layer'.
+        Mage::register('current_layer', $this->getLayer(), true);
     }
 
     /**

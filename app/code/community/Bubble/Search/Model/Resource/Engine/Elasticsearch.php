@@ -501,8 +501,19 @@ class Bubble_Search_Model_Resource_Engine_Elasticsearch extends Bubble_Search_Mo
             $_sort = each($sort);
             $sortField = $_sort['key'];
             $sortType = $_sort['value'];
+
+            // MERCATOR - Make sure we don't try to sort on category position
+            // without a registered current category. Default to relevance in
+            // this situation.
+            if ($sortField == 'position' && !is_object(Mage::registry('current_category'))) {
+                $sortField = 'relevance';
+            }
+
             if ($sortField == 'relevance') {
                 $sortField = '_score';
+                // MERCATOR - We never want to sort on ascending relevance
+                // (i.e. showing the least relevant results first).
+                $sortType = 'desc';
             } elseif ($sortField == 'position') {
                 $sortField = 'position_category_' . Mage::registry('current_category')->getId();
             } elseif ($sortField == 'price') {
