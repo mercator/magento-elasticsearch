@@ -395,6 +395,12 @@ class Bubble_Search_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function isActiveEngine()
     {
+        // MERCATOR - Only use Elasticsearch classes for search pages, not
+        // category pages.
+        if(Mage::app()->getRequest()->getModuleName() !== 'catalogsearch') {
+            return false;
+        }
+
         $engine = $this->getSearchConfigData('engine');
         if ($engine && Mage::getConfig()->getResourceModelClassName($engine)) {
             $model = Mage::getResourceSingleton($engine);
