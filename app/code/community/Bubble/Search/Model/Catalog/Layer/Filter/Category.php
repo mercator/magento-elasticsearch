@@ -105,14 +105,6 @@ class Bubble_Search_Model_Catalog_Layer_Filter_Category extends Mage_Catalog_Mod
             /** @var $productCollection Bubble_Search_Model_Resource_Catalog_Product_Collection */
             $productCollection = $layer->getProductCollection();
 
-            // MERCATOR - Load the product collection, if we haven't already.
-            // This is necessary if the left sidebar (where layered nav is
-            // used) is loaded before the main content area (where the
-            // collection would normally be loaded). If the collection isn't
-            // loaded when this method runs, there'll never be any faceted
-            // data and so search layered nav will always be missing.
-            $productCollection->load();
-
             $facets = $productCollection->getFacetedData('categories');
 
             $data = array();
